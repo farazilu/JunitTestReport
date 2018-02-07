@@ -19,11 +19,11 @@ public class TradeReport {
 			String settlementDate = instruction.getSettlementDate();
 			Double trade = instruction.getTrade();
 			if (instruction.getInstructionType() == 'S') {
-				Double freq = incomming.get(settlementDate);
-				incomming.put(settlementDate, (freq == null) ? trade : freq + trade);
+				Double runningTotal = incomming.get(settlementDate);
+				incomming.put(settlementDate, (runningTotal == null) ? trade : runningTotal + trade);
 			} else {
-				Double freq = outgoing.get(settlementDate);
-				outgoing.put(settlementDate, (freq == null) ? trade : freq + trade);
+				Double runningTotal = outgoing.get(settlementDate);
+				outgoing.put(settlementDate, (runningTotal == null) ? trade : runningTotal + trade);
 			}
 			// associative array in java
 			// https://stackoverflow.com/questions/5122913/java-associative-array
