@@ -1,10 +1,15 @@
 package com.trade.report;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class TradeReport {
 
+	
+	void addInstruction(Instruction instruction) {
+		if (instruction.is_sattled()) {
+			// process report
+			
+			//assosiative array in java
+			//https://stackoverflow.com/questions/5122913/java-associative-array
+		}
+	}
 
 }

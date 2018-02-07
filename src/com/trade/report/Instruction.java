@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Instruction {
 	private String entity;
-	private String instruction;
+	private char instruction;
 	private double agreedFx;
 	private String currency;
 	private String instuctionDate;
@@ -14,8 +14,9 @@ public class Instruction {
 	private int units;
 	private double pricePerUnit;
 	private double trade;
+	private boolean sattled = false;
 
-	Instruction(String entity, String instruction, double agreedFx, String currency, String instuctionDate,
+	Instruction(String entity, char instruction, double agreedFx, String currency, String instuctionDate,
 			String settlementDate, int units, double pricePerUnit) {
 		this.entity = entity;
 		this.instruction = instruction;
@@ -28,15 +29,33 @@ public class Instruction {
 	}
 
 	public void sattle() {
-		if (checkWeekend(instuctionDate, currency)) {
-			this.settlementDate = getNextWorkingDay(instuctionDate, currency);
+		if (sattled == false) {
+			if (checkWeekend(instuctionDate, currency)) {
+				this.settlementDate = getNextWorkingDay(instuctionDate, currency);
+			}
+			trade = pricePerUnit * units * agreedFx;
+			sattled = true;
 		}
-		trade = pricePerUnit * units * agreedFx;
+	}
 
+	public boolean is_sattled() {
+		return sattled;
 	}
 
 	public double getTrade() {
 		return trade;
+	}
+
+	public String getSettlementDate() {
+		return settlementDate;
+	}
+
+	public char getInstructionType() {
+		return instruction;
+	}
+
+	public String getEntity() {
+		return entity;
 	}
 
 	public boolean checkWeekend(String date, String currency) {

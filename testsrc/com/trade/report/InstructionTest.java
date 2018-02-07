@@ -11,7 +11,7 @@ class InstructionTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		instuction = new Instruction("foo", "B", 0.50, "SGP", "01 Jan 2016", "02 Jan 2016", 200, 100.25);
+		instuction = new Instruction("foo", 'B' , 0.50, "SGP", "01 Jan 2016", "02 Jan 2016", 200, 100.25);
 	}
 
 	@Test
