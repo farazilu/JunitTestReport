@@ -30,8 +30,8 @@ public class Instruction {
 
 	public void sattle() {
 		if (sattled == false) {
-			if (checkWeekend(instuctionDate, currency)) {
-				this.settlementDate = getNextWorkingDay(instuctionDate, currency);
+			if (checkWeekend(settlementDate, currency)) {
+				settlementDate = getNextWorkingDay(settlementDate, currency);
 			}
 			trade = pricePerUnit * units * agreedFx;
 			sattled = true;
