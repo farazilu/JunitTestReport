@@ -69,6 +69,11 @@ public class TradeReport {
 				.forEach(System.out::println);
 	}
 
+	/**
+	 * @deprecated
+	 * @param unsortMap
+	 * @return
+	 */
 	private Map<String, Double> sortRanking(Map<String, Double> unsortMap) {
 		return unsortMap.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue,
