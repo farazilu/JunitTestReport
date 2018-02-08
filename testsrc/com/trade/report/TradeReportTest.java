@@ -1,57 +1,43 @@
 package com.trade.report;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
-@RunWith(Parameterized.class)
 class TradeReportTest {
 
 	private TradeReport tradeReport;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		// setup report
 		tradeReport = new TradeReport();
-	}
 
-	@Parameters
-	public static Collection<Object[]> testData() {
-		Object[][] data = new Object[][] { { 1, 2, 3 } };
-		return Arrays.asList(data);
+		// setup sample instructions
+		Instruction[] instructions = new Instruction[9];
+		instructions[0] = new Instruction("foo", 'B', 0.50, "SGP", "01 Jan 2016", "02 Jan 2016", 200, 100.25);
+		instructions[1] = new Instruction("foo", 'B', 0.10, "GBP", "01 Jan 2016", "05 Jan 2016", 200, 100.25);
+		instructions[2] = new Instruction("bar", 'B', 0.70, "INR", "01 Jan 2016", "01 Jan 2016", 20, 100.25);
+		instructions[3] = new Instruction("too", 'B', 0.25, "AED", "01 Jan 2016", "07 Jan 2016", 20, 100.25);
+
+		instructions[5] = new Instruction("foo", 'S', 0.50, "SGP", "01 Jan 2016", "02 Jan 2016", 200, 100.25);
+		instructions[6] = new Instruction("foo", 'S', 0.10, "GBP", "01 Jan 2016", "05 Jan 2016", 200, 100.25);
+		instructions[7] = new Instruction("bar", 'S', 0.70, "INR", "01 Jan 2016", "03 Jan 2016", 15, 100.25);
+		instructions[8] = new Instruction("too", 'S', 0.35, "SAR", "01 Jan 2016", "10 Jan 2016", 20, 100.25);
+
+		for (Instruction instruction : instructions) {
+			if (instruction != null) {
+				tradeReport.addInstruction(instruction);
+			}
+		}
+		// instuction.sattle();
+
 	}
 
 	@Test
 	void tradeReportTest() {
-		fail("its suppose to fial");
+
+		// check console for report
+		tradeReport.printReport();
 	}
 
-	@Test
-	void checkWeekendTest() {
-
-//		assertEquals(true, tradeReport.checkWeekend("02 Jan 2016", "SGP")); // Sat weekend
-//		assertEquals(true, tradeReport.checkWeekend("03 Jan 2016", "SGP")); // Sun weekend
-//		assertEquals(false, tradeReport.checkWeekend("04 Jan 2016", "SGP")); // Monday weekday
-//
-//		assertEquals(false, tradeReport.checkWeekend("07 Jan 2016", "AED")); // Thu weekday
-//		assertEquals(true, tradeReport.checkWeekend("08 Jan 2016", "AED")); // Fri weekend for AED
-//		assertEquals(true, tradeReport.checkWeekend("09 Jan 2016", "AED")); // Sat weekend for AED
-	}
-
-	@Test
-	void getNextWorkingDayTest() {
-//		assertEquals("04 Jan 2016", tradeReport.getNextWorkingDay("02 Jan 2016", "SGP")); // Sat weekend
-//		assertEquals("04 Jan 2016", tradeReport.getNextWorkingDay("03 Jan 2016", "SGP")); // Sun weekend
-//		assertEquals("04 Jan 2016", tradeReport.getNextWorkingDay("04 Jan 2016", "SGP")); // Monday weekday
-//
-//		assertEquals("07 Jan 2016", tradeReport.getNextWorkingDay("07 Jan 2016", "AED")); // Thu weekday
-//		assertEquals("10 Jan 2016", tradeReport.getNextWorkingDay("08 Jan 2016", "AED")); // Fri weekend for AED
-//		assertEquals("10 Jan 2016", tradeReport.getNextWorkingDay("09 Jan 2016", "AED")); // Sat weekend for AED
-	}
 }
