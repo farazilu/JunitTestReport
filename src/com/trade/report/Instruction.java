@@ -4,6 +4,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.sun.media.sound.InvalidDataException;
+
 public class Instruction {
 	private String entity;
 	private char instruction;
@@ -17,7 +19,10 @@ public class Instruction {
 	private boolean sattled = false;
 
 	Instruction(String entity, char instruction, double agreedFx, String currency, String instuctionDate,
-			String settlementDate, int units, double pricePerUnit) {
+			String settlementDate, int units, double pricePerUnit) throws InvalidDataException {
+		if (instruction != 'B' && instruction != 'S') {
+			throw new InvalidDataException("Wrong instruction value, expecting B or S. given: " + instruction);
+		}
 		this.entity = entity;
 		this.instruction = instruction;
 		this.agreedFx = agreedFx;
@@ -29,6 +34,7 @@ public class Instruction {
 	}
 
 	public void sattle() {
+
 		if (sattled == false) {
 			if (checkWeekend(settlementDate, currency)) {
 				settlementDate = getNextWorkingDay(settlementDate, currency);
