@@ -1,13 +1,10 @@
 # JunitTestReport
 
 
-| Entity | Buy/Sell | AgreedFx | Currency | InstructionDate | SettlementDate |  Units | unit Price per
-
-| -------|:---------| --------:| ---------|-----------------|----------------|--------|-----------------|
-
-| foo    | B        | 0.50     | SGP      |  01 Jan 2016    | 02 Jan 2016    | 200    | 100.25
-
-| bar    | S        | 0.22     | AED      | 05 Jan 2016     | 07 Jan 2016    | 450    | 150.5
+| Entity | Buy/Sell | AgreedFx | Currency | InstructionDate | SettlementDate |  Units | unit Price per  |
+| -------|----------| ---------| ---------|-----------------|----------------|--------|-----------------|
+| foo    | B        | 0.50     | SGP      |  01 Jan 2016    | 02 Jan 2016    | 200    | 100.25          |
+| bar    | S        | 0.22     | AED      | 05 Jan 2016     | 07 Jan 2016    | 450    | 150.5           |
 
 * A work week starts Monday and ends Friday, unless the currency of the trade is AED or SAR, where
 the work week starts Sunday and ends Thursday. No other holidays to be taken into account.
