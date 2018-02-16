@@ -13,7 +13,7 @@ the work week starts Sunday and ends Thursday. No other holidays to be taken int
 the next working day.
 * USD amount of a trade = Price per unit * Units * Agreed Fx
 
-##Create a report that shows
+## Create a report that shows
 * Amount in USD settled incoming everyday
 * Amount in USD settled outgoing everyday
 * Ranking of entities based on incoming and outgoing amount. Eg: If entity foo instructs the highest
